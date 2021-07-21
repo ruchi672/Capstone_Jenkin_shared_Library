@@ -1,0 +1,11 @@
+version: '2'
+
+
+services:
+  capstone:
+    build: . 
+    image: ruchi672/capstoneproject:$BUILD_NUMBER
+    container_name: capstoneproject1
+    ports:
+      - '30080:8080'
+

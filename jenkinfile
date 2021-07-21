@@ -1,0 +1,29 @@
+node {
+  
+  stage('GIT CheckOut') {
+    git 'https://github.com/ruchi672/projectRepository.git'
+  }
+
+  stage('Maven-Clean') {
+    sh label: '', script: 'mvn clean'
+  }
+
+  stage('Maven-Compile') {
+    sh label: '', script: 'mvn clean install'
+  }
+  
+  stage('Maven-Test') {
+    sh label: '', script: 'mvn test'
+  }
+
+
+ stage('Sonar Analysis') {
+   withSonarQubeEnv('sonar') {
+        sh "mvn sonar:sonar"
+    }
+  }
+  
+  stage('Maven-Package') {
+    sh label: '', script: 'mvn package'
+  }      
+}
