@@ -3,32 +3,13 @@ def call(String mvnaction) {
        agent any
        stages {
            stage("Clean") {
-               steps {
-                script {
-                    if ("${mvnaction}" == "Clean") {
-                        echo 'Clean'
-                    }
-                }
-           }
-       }
-        stage("Test") {
-               steps {
-                script {
-                    if ("${mvnaction}" == "Test") {
-                        echo 'Test'
-                    }
-                }
-           }
-       }
-        stage("Install") {
-               steps {
-                script {
-                    if ("${mvnaction}" == "Install") {
-                        echo 'Install'
-                    }
-                }
+                when {
+       			mvnaction 'Clean'
+    			}
+   		 steps {
+       		 	echo 'run this stage - ony if the branch = master branch'
+    			}
            }
        }
    }
-}
 }
