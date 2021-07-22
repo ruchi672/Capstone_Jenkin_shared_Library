@@ -4,7 +4,7 @@ def call(String mvnaction) {
        stages {
            stage("Clean") {
                 when {
-       			mvnaction 'Clean'
+       			expression { mvnaction == "Clean" }
     			}
    		 steps {
        		 	echo 'run this stage - ony if the branch = master branch'
