@@ -1,27 +1,15 @@
 def call(String mvnaction) {
-    
-              if ("${mvnaction}" == "Clean")
-                    {
-                    sh """
-                        echo Maven Clean
-                       """
-                    }
-              else if ("${mvnaction}" == "Compile")
-                    {
-                   sh """
-                        echo Maven Compile
-                       """
-                    }
-               else if ("${mvnaction}" == "Test")
-                    {
-                    sh """
-                        echo Maven Test
-                       """
-                    }
-                 else if ("${mvnaction}" == "Install")
-                    {
-                    sh """
-                        echo Maven Install
-                       """
-                    }
+  pipeline {
+       agent any
+       stages {
+           stage("Clean") {
+                when {
+       			"${mvnaction}" == "Clean"
+    			}
+   		 steps {
+       		 	echo 'run this stage - only if clean stage'
+    			}
+           }
+       }
+   }
 }
