@@ -11,6 +11,24 @@ def call(String mvnaction) {
                 }
            }
        }
+        stage("Test") {
+               steps {
+                script {
+                    if ("${mvnaction}" == "Test") {
+                        echo 'Test'
+                    }
+                }
+           }
+       }
+        stage("Install") {
+               steps {
+                script {
+                    if ("${mvnaction}" == "Install") {
+                        echo 'Install'
+                    }
+                }
+           }
+       }
    }
 }
 }
