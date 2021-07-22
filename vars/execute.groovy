@@ -1,3 +1,4 @@
+
 def call(String mvnaction) {
   pipeline {
        agent any
@@ -10,8 +11,6 @@ def call(String mvnaction) {
        		 	echo 'run this Clean - ony if the branch = master branch'
     			}
            }
-       }
-       stages {
            stage("Test") {
                 when {
        			expression { mvnaction == "Test" }
