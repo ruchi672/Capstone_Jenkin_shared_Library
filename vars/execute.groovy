@@ -7,9 +7,20 @@ def call(String mvnaction) {
        			expression { mvnaction == "Clean" }
     			}
    		 steps {
-       		 	echo 'run this stage - ony if the branch = master branch'
+       		 	echo 'run this Clean - ony if the branch = master branch'
+    			}
+           }
+       }
+       stages {
+           stage("Test") {
+                when {
+       			expression { mvnaction == "Test" }
+    			}
+   		 steps {
+       		 	echo 'run this Test- ony if the branch = master branch'
     			}
            }
        }
    }
 }
+
