@@ -3,13 +3,14 @@ def call(String mvnaction) {
        agent any
        stages {
            stage("Clean") {
-                when {
-       			"${mvnaction}" == "Clean"
-    			}
-   		 steps {
-       		 	echo 'run this stage - only if clean stage'
-    			}
+               steps {
+                script {
+                    if ("${mvnaction}" == "Clean") {
+                        echo 'Clean'
+                    }
+                }
            }
        }
    }
+}
 }
